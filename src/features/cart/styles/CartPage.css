@@ -1,0 +1,24 @@
+.cart-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.section {
+    background-color: #fff;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    box-sizing: 5px 10px rgba(0,0,0, 1);
+}
+
+.left-cart {
+    width: 60%;
+}
+
+.right-cart {
+    float: left;
+    width: 30%;
+}
