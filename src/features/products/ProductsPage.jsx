@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import './styles/ProductsPage.css'
 import ProductCard from "../../components/ProductCard";
+import { useOutletContext } from "react-router-dom";
 
 function ProductsPage() {
-
     const [products, setProducts] = useState([]);
+    const { addToCart } = useOutletContext();
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products/')
@@ -23,9 +24,11 @@ function ProductsPage() {
             return (
                 <ProductCard 
                 key={product.id}
+                id={product.id}
                 image={product.image}
                 title={product.title}
-                price={product.price} />
+                price={product.price}
+                addToCart={addToCart} />
             )
         })}
         </div>
