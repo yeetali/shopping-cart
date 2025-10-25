@@ -1,7 +1,8 @@
 import './styles/ProductPreview.css'
 import ProductCard from './ProductCard'
 
-export default function ProductPreview({ products }) {
+export default function ProductPreview({ products, addToCart }) {
+
     return(
         <section className="product-preview-section">
             <div className='content'>
@@ -11,9 +12,11 @@ export default function ProductPreview({ products }) {
                     return (
                     <ProductCard 
                     key={product.id}
+                    id={product.id}
                     image={product.image}
                     title={product.title}
-                    price={product.price}/>
+                    price={product.price}
+                    addToCart={addToCart}/>
                 )
                 })}
             </div>

@@ -1,7 +1,10 @@
+import { useMemo } from 'react';
 import './styles/CartSummary.css'
 
 export function CartSummary({ cart }) {
-    let total = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
+    const totalPrice = useMemo(() => {
+        return cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
+    }, [ cart ]);
     let shipping = 10;
     return (
         <div className="cart-summary">
@@ -9,7 +12,7 @@ export function CartSummary({ cart }) {
             
             <div className="summary-row">
                 <span>Subtotal</span>
-                <span>${(total).toFixed(2)}</span>
+                <span>${(totalPrice).toFixed(2)}</span>
             </div>
 
             <div className="summary-row">
@@ -19,7 +22,7 @@ export function CartSummary({ cart }) {
 
             <div className="summary-row total">
                 <span>Total</span>
-                <span>${(total + shipping).toFixed(2)}</span>
+                <span>${(totalPrice + shipping).toFixed(2)}</span>
             </div>
 
             <button className="checkout-btn">Proceed to Checkout</button>

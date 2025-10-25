@@ -2,10 +2,12 @@ import './styles/HomePage.css'
 import { HomeBanner } from '../../components/HomeBanner';
 import ProductPreview from '../../components/ProductPreview';
 import { useEffect, useState } from 'react';
+import { useOutletContext } from "react-router-dom";
 
 function HomePage () {
     
     const [products, setProducts] = useState([]);
+    const { addToCart } = useOutletContext();
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products/')
@@ -28,7 +30,9 @@ function HomePage () {
     return(
         <div className='home-page'>
             <HomeBanner />
-            <ProductPreview products={previewProducts} />
+            <ProductPreview 
+            products={previewProducts}
+            addToCart={addToCart} />
         </div>
     )
 }
